@@ -81,7 +81,7 @@ class Search
    * @param int $service_index
    * @param Exception $e
    */
-  public function query($q, $service_index = 0, $e = null)
+  protected function call($method, $q, $service_index, $e)
   {    
     if (!isset($this->services[$service_index]))
     {
@@ -95,9 +95,20 @@ class Search
     }
     catch(\Exception $e)
     {
-      $this->query($q, ++$service_index, $e);
+      $this->$method($q, ++$service_index, $e);
     }
 
+  }
+  
+  /**
+   * Query for geo code an address. You usually will use only the first argument.
+   * @param string $q the address query you want to geocode e.g.: "via montenapoleone, milano, italy"
+   * @param int $service_index
+   * @param Exception $e 
+   */
+  public function query($q, $service_index = 0, $e = null)
+  {
+      $this->call('query', $q, $service_index, $e);
   }
 
   /**
