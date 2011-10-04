@@ -29,6 +29,12 @@ abstract class Service
    * @return array
    */
   abstract protected function query($q);
+  
+  /**
+   * @param string
+   * @return array
+   */
+  abstract protected function reverse($lat, $lng);
 
   abstract protected function initLocation($values);
   

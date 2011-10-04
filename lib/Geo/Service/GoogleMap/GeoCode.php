@@ -37,4 +37,9 @@ class GeoCode extends \Geo\Service
     $locations = json_decode($data, true);
     return $locations['results'];
   }
+  
+  protected function reverse($lat, $lng)
+  {
+      throw new NotImplemented();
+  }
 }

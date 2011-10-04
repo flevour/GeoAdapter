@@ -10,6 +10,7 @@
 namespace Geo\Service\OpenStreetMap;
 
 use Geo\Service;
+use Geo\Exception\NotImplemented;
 
 /**
  * Nominatim service wrap the Nominatim OpenStreetMap Service
@@ -37,5 +38,10 @@ class Nominatim extends Service
     $data = file_get_contents("{$baseUrl}{$name}&countrycodes={$this->region}&addressdetails=1");
 
     return json_decode($data, true);
+  }
+  
+  protected function reverse($lat, $lng)
+  {
+      throw new NotImplemented();
   }
 }
