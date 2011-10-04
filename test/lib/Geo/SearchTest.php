@@ -34,7 +34,7 @@ class SearchTest extends \PHPUnit_Framework_TestCase
         $this->service->
                 expects($this->once())->
                 method('search')->
-                with('Milano');
+                with('query', 'Milano');
 
         $this->service->
                 expects($this->once())->
@@ -65,7 +65,7 @@ class SearchTest extends \PHPUnit_Framework_TestCase
         $this->service->
                 expects($this->once())->
                 method('search')->
-                with('questo è un indirizzo che non esiste')->
+                with('query', 'questo è un indirizzo che non esiste')->
                 will($this->throwException(new \Geo\Exception\NoResults));
 
         $this->search->addService($this->service);
@@ -77,7 +77,7 @@ class SearchTest extends \PHPUnit_Framework_TestCase
         $this->service->
                 expects($this->once())->
                 method('search')->
-                with('Milano');
+                with('query', 'Milano');
 
         $this->service->
                 expects($this->once())->

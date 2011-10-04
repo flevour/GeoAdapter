@@ -65,11 +65,11 @@ abstract class Service
     $this->language = $language;
   }
   
-  public function search($q)
+  public function search($method, $q)
   {
     $this->results->exchangeArray(array());
     
-    $results = $this->query($q);
+    $results = $this->$method($q);
     
     if (!is_array($results))
     {

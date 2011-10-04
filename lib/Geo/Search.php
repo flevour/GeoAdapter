@@ -90,7 +90,7 @@ class Search
 
     try
     {
-      $this->services[$service_index]->search($q);
+      $this->services[$service_index]->search($method, $q);
       $this->results = $this->services[$service_index]->getResults();
     }
     catch(\Exception $e)
