@@ -13,6 +13,9 @@ require_once dirname(__FILE__) . '/../../../../../lib/Geo/Location.php';
 require_once dirname(__FILE__) . '/../../../../../lib/Geo/Service.php';
 require_once dirname(__FILE__) . '/../../../../../lib/Geo/Service/OpenStreetMap/Nominatim.php';
 
+/**
+ * @group online
+ */
 class NominatimTest extends \PHPUnit_Framework_TestCase
 {
   public function setUp()

@@ -13,6 +13,9 @@ require_once dirname(__FILE__) . '/../../../../../lib/Geo/Location.php';
 require_once dirname(__FILE__) . '/../../../../../lib/Geo/Service.php';
 require_once dirname(__FILE__) . '/../../../../../lib/Geo/Service/GoogleMap/GeoCode.php';
 
+/**
+ * @group online
+ */
 class GeoCodeTest extends \PHPUnit_Framework_TestCase
 {
   public function setUp()
