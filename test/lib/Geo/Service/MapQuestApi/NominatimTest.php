@@ -23,7 +23,7 @@ class NominatimTest extends \PHPUnit_Framework_TestCase
     $this->client = $this->getMockBuilder('\Geo\HttpClient')
             ->setMethods(array('get'))
             ->getMock();
-    $this->service = new Nominatim($this->client);
+    $this->service = new Nominatim($this->client, 'fooBaseUrl');
     $this->service->setRegion('IT');
   }
 
@@ -32,7 +32,7 @@ class NominatimTest extends \PHPUnit_Framework_TestCase
     $json = file_get_contents(__DIR__ . "/responseSearch.txt");
     $this->client->expects($this->once())
             ->method('get')
-            ->with('http://open.mapquestapi.com/nominatim/v1/search?format=json&&q=Milano&countrycodes=IT&addressdetails=1')
+            ->with('fooBaseUrl/search?format=json&&q=Milano&countrycodes=IT&addressdetails=1')
             ->will($this->returnValue($json));
     $this->service->search('query', 'Milano');
     $results = $this->service->getResults();
@@ -50,7 +50,7 @@ class NominatimTest extends \PHPUnit_Framework_TestCase
     $json = file_get_contents(__DIR__ . "/responseReverse.txt");
     $this->client->expects($this->once())
             ->method('get')
-            ->with('http://open.mapquestapi.com/nominatim/v1/reverse?format=json&lat=45.466621&lon=9.190617&countrycodes=IT&addressdetails=1')
+            ->with('fooBaseUrl/reverse?format=json&lat=45.466621&lon=9.190617&countrycodes=IT&addressdetails=1')
             ->will($this->returnValue($json));
     $this->service->search('reverse', '45.466621', '9.190617');
     $results = $this->service->getResults();
