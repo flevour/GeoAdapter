@@ -71,11 +71,14 @@ abstract class Service
     $this->language = $language;
   }
   
-  public function search($method, $q)
+  public function search($method, $args)
   {
+    $args = func_get_args();
+    $method = array_shift($args);
+    
     $this->results->exchangeArray(array());
     
-    $results = $this->$method($q);
+    $results = call_user_func_array(array($this, $method), $args);
     
     if (!is_array($results))
     {
@@ -84,7 +87,7 @@ abstract class Service
     
     if (empty($results) || count($results) == 0)
     {
-      throw new Exception\NoResults('No location "'.$q.'" found');
+      throw new Exception\NoResults(sprintf('No results "%s" found', print_r($args, true)));
     }
 
     $this->hydrate($results);

@@ -81,23 +81,24 @@ class Search
    * @param int $service_index
    * @param Exception $e
    */
-  protected function call($method, $q, $service_index, $e)
-  {    
-    if (!isset($this->services[$service_index]))
-    {
-      throw $e !== null?$e:new Exception\InvalidService('Service is not set');;
-    }
-
-    try
-    {
-      $this->services[$service_index]->search($method, $q);
-      $this->results = $this->services[$service_index]->getResults();
-    }
-    catch(\Exception $e)
-    {
-      $this->$method($q, ++$service_index, $e);
-    }
-
+  protected function call($method, $q)
+  {
+      $args = func_get_args();
+      $e = null;
+      $resultsFound = false;
+      foreach ($this->services as $service) {
+          try {
+              call_user_func_array(array($service, 'search'), $args);
+              $this->results = $service->getResults();
+              $resultsFound = true;
+              
+          } catch (\Exception $_e) {
+              $e = $_e;
+          }
+      }
+      if ($e || !$resultsFound) {
+          throw $e !== null ? $e : new Exception\InvalidService('Service is not set');
+      }
   }
   
   /**
@@ -106,9 +107,20 @@ class Search
    * @param int $service_index
    * @param Exception $e 
    */
-  public function query($q, $service_index = 0, $e = null)
+  public function query($q)
   {
-      $this->call('query', $q, $service_index, $e);
+      $this->call('query', $q);
+  }
+  
+  /**
+   * Query for geo code an address. You usually will use only the first argument.
+   * @param string $q the address query you want to geocode e.g.: "via montenapoleone, milano, italy"
+   * @param int $service_index
+   * @param Exception $e 
+   */
+  public function reverse($q)
+  {
+      $this->call('reverse', $q);
   }
 
   /**
