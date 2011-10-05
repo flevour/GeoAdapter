@@ -118,9 +118,9 @@ class Search
    * @param int $service_index
    * @param Exception $e 
    */
-  public function reverse($q)
+  public function reverse($lat, $lng)
   {
-      $this->call('reverse', $q);
+      $this->call('reverse', $lat, $lng);
   }
 
   /**

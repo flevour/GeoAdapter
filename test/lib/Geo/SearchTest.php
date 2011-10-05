@@ -96,11 +96,10 @@ class SearchTest extends \PHPUnit_Framework_TestCase
 
     public function testReverseQuery()
     {
-        $this->markTestIncomplete();
         $this->service->
                 expects($this->once())->
-                method('reverse')->
-                with('37.5024825', '15.0878345');
+                method('search')->
+                with('reverse', '37.5024825', '15.0878345');
 
         $this->service->
                 expects($this->once())->
