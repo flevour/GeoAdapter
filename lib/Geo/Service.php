@@ -53,10 +53,11 @@ abstract class Service
     $this->results->append($location);
   }
 
-  public function __construct(HttpClient $client)
+  public function __construct(HttpClient $client, $baseUrl = null)
   {
     $this->results = new \ArrayObject();
     $this->client = $client;
+    $this->baseUrl = $baseUrl;
   }
 
   public function getResults()
