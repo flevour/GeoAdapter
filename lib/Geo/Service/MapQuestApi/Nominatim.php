@@ -34,14 +34,16 @@ class Nominatim extends Service
   protected function query($q)
   {
     $name = urlencode($q);
-    $baseUrl = 'http://open.mapquestapi.com/nominatim/v1/search?format=json&q=';
-    $data = file_get_contents("{$baseUrl}{$name}&countrycodes={$this->region}&addressdetails=1");
+    $baseUrl = 'http://open.mapquestapi.com/nominatim/v1/search?format=json&';
+    $data = $this->client->get(sprintf("%s&q=%s&countrycodes=%s&addressdetails=1", $baseUrl, $q, $this->region));
 
     return json_decode($data, true);
   }
   
   protected function reverse($lat, $lng)
   {
-      throw new NotImplemented();
+        $baseUrl = 'http://open.mapquestapi.com/nominatim/v1/reverse?format=json';
+        $data = $this->client->get(sprintf("%s&lat=%s&lon=%s&countrycodes=%s&addressdetails=1", $baseUrl, $lat, $lng, $this->region));
+        return array(json_decode($data, true));
   }
 }

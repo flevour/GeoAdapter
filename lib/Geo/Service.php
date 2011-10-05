@@ -23,6 +23,8 @@ abstract class Service
   protected $region;
 
   protected $language;
+  
+  protected $client;
 
   /**
    * @param string
@@ -51,9 +53,10 @@ abstract class Service
     $this->results->append($location);
   }
 
-  public function __construct()
+  public function __construct(HttpClient $client)
   {
     $this->results = new \ArrayObject();
+    $this->client = $client;
   }
 
   public function getResults()
