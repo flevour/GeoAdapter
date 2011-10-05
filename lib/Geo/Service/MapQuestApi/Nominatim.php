@@ -27,6 +27,9 @@ class Nominatim extends Service
     !isset($values['lat'])?:$location->setLatitude($values['lat']);
     !isset($values['lon'])?:$location->setLongitude($values['lon']);
     !isset($values['display_name'])?:$location->setAddress($values['display_name']);
+    !isset($values['address']['pedestrian'])?:$location->setStreet($values['address']['pedestrian']);
+    !isset($values['address']['postcode'])?:$location->setZipCode($values['address']['postcode']);
+    !isset($values['address']['city'])?:$location->setLocality($values['address']['city']);
 
     return $location;
   }
