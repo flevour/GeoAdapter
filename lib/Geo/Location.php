@@ -21,6 +21,9 @@ class Location
   private $latitude;
   private $longitude;
   private $address;
+  private $zipCode;
+  private $locality;
+  private $street;
 
   /**
    * Set latitude
@@ -80,6 +83,66 @@ class Location
   public function getAddress()
   {
     return $this->address;
+  }
+
+  /**
+   * Set street
+   *
+   * @param string $street
+   */
+  public function setStreet($street)
+  {
+    $this->street = $street;
+  }
+
+  /**
+   * Get Street
+   *
+   * @return string
+   */
+  public function getStreet()
+  {
+    return $this->street;
+  }
+
+  /**
+   * Set locality
+   *
+   * @param string $locality
+   */
+  public function setLocality($locality)
+  {
+    $this->locality = $locality;
+  }
+
+  /**
+   * Get Locality
+   *
+   * @return string
+   */
+  public function getLocality()
+  {
+    return $this->locality;
+  }
+
+  /**
+   * Set zip code
+   *
+   * @param string $zipCode
+   */
+  public function setZipCode($zipCode)
+  {
+    $this->zipCode = $zipCode;
+  }
+
+  /**
+   * Get zip code
+   *
+   * @return string
+   */
+  public function getZipCode()
+  {
+    return $this->zipCode;
   }
 
   /**
