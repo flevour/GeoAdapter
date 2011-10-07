@@ -24,6 +24,7 @@ class Location
   private $zipCode;
   private $locality;
   private $street;
+  private $province;
 
   /**
    * Set latitude
@@ -123,6 +124,26 @@ class Location
   public function getLocality()
   {
     return $this->locality;
+  }
+
+  /**
+   * Set province
+   *
+   * @param string $province
+   */
+  public function setProvince($province)
+  {
+    $this->province = $province;
+  }
+
+  /**
+   * Get Province
+   *
+   * @return string
+   */
+  public function getProvince()
+  {
+    return $this->province;
   }
 
   /**

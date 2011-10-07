@@ -65,5 +65,6 @@ class NominatimTest extends \PHPUnit_Framework_TestCase
     $this->assertEquals('Piazza della Scala', $location->getStreet());
     $this->assertEquals('20121', $location->getZipCode());
     $this->assertEquals('Milano', $location->getLocality());
+    $this->assertEquals('Milano', $location->getProvince());
   }
 }

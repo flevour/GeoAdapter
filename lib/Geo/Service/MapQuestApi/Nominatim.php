@@ -30,6 +30,7 @@ class Nominatim extends Service
     !isset($values['address']['pedestrian'])?:$location->setStreet($values['address']['pedestrian']);
     !isset($values['address']['postcode'])?:$location->setZipCode($values['address']['postcode']);
     !isset($values['address']['city'])?:$location->setLocality($values['address']['city']);
+    !isset($values['address']['county'])?:$location->setProvince($values['address']['county']);
 
     return $location;
   }
