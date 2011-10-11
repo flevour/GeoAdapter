@@ -25,7 +25,10 @@ class SearchTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->location = $this->getMock('\Geo\Location', array('getLatitude', 'getLongitude'));
-        $this->service = $this->getMock('\Geo\Service\OpenStreetMap\Nominatim', array('search', 'getResults'));
+        $this->service = $this->getMockBuilder('\Geo\Service\OpenStreetMap\Nominatim')
+                ->setMethods(array('search', 'getResults'))
+                ->disableOriginalConstructor()
+                ->getMock();
         $this->search = new Search;
     }
 
