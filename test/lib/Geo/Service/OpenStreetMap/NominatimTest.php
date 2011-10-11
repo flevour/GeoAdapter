@@ -20,6 +20,7 @@ class NominatimTest extends \PHPUnit_Framework_TestCase
 {
   public function setUp()
   {
+      $this->markTestIncomplete();
     $this->service = new Nominatim;
     $this->service->setRegion('IT');
   }
