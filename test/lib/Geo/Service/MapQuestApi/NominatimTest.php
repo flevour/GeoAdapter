@@ -32,9 +32,9 @@ class NominatimTest extends \PHPUnit_Framework_TestCase
     $json = file_get_contents(__DIR__ . "/responseSearch.txt");
     $this->client->expects($this->once())
             ->method('get')
-            ->with('fooBaseUrl/search?format=json&&q=Milano&countrycodes=IT&addressdetails=1')
+            ->with('fooBaseUrl/search?format=json&q=Milano%20Ciao&countrycodes=IT&addressdetails=1')
             ->will($this->returnValue($json));
-    $this->service->search('query', 'Milano');
+    $this->service->search('query', 'Milano Ciao');
     $results = $this->service->getResults();
 
     $this->assertEquals('9', count($results));
