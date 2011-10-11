@@ -38,9 +38,8 @@ class Nominatim extends Service
   protected function query($q)
   {
     $name = urlencode($q);
-    $baseUrl = $this->baseUrl . '/search?format=json&';
-    $data = $this->client->get(sprintf("%s&q=%s&countrycodes=%s&addressdetails=1", $baseUrl, $q, $this->region));
-
+    $baseUrl = $this->baseUrl . '/search?format=json';
+    $data = $this->client->get(sprintf("%s&q=%s&countrycodes=%s&addressdetails=1", $baseUrl, rawurlencode($q), $this->region));
     return json_decode($data, true);
   }
   
