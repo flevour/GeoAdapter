@@ -1,0 +1,74 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "1",
+               "short_name" : "1",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "Via San Zeno",
+               "short_name" : "Via San Zeno",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "Terento",
+               "short_name" : "Terento",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Bolzano",
+               "short_name" : "BZ",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Trentino-Alto Adige",
+               "short_name" : "Trentino-Alto Adige",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Italia",
+               "short_name" : "IT",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "39030",
+               "short_name" : "39030",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "Via San Zeno, 1, 39030 Terento BZ, Italia",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 46.82696760,
+                  "lng" : 11.77101940
+               },
+               "southwest" : {
+                  "lat" : 46.82464520,
+                  "lng" : 11.76995350
+               }
+            },
+            "location" : {
+               "lat" : 46.82696270,
+               "lng" : 11.77064440
+            },
+            "location_type" : "RANGE_INTERPOLATED",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 46.82715538029150,
+                  "lng" : 11.77183543029150
+               },
+               "southwest" : {
+                  "lat" : 46.82445741970850,
+                  "lng" : 11.76913746970850
+               }
+            }
+         },
+         "partial_match" : true,
+         "types" : [ "street_address" ]
+      }
+   ],
+   "status" : "OK"
+}

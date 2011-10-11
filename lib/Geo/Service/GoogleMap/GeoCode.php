@@ -24,16 +24,15 @@ class GeoCode extends \Geo\Service
     !isset($values['geometry']['location']['lat'])?:$location->setLatitude($values['geometry']['location']['lat']);
     !isset($values['geometry']['location']['lng'])?:$location->setLongitude($values['geometry']['location']['lng']);
     !isset($values['formatted_address'])?:$location->setAddress($values['formatted_address']);
-
+    
     return $location;
   }
 
   public function query($q)
   {
-    $name = urlencode($q);
+    $name = rawurlencode($q);
     $baseUrl = 'http://maps.googleapis.com/maps/api/geocode/json?address=';
-    $data = file_get_contents("{$baseUrl}{$name}&region={$this->region}&sensor=false&language={$this->language}");
-
+    $data = $this->client->get("{$baseUrl}{$name}&region={$this->region}&sensor=false&language={$this->language}");
     $locations = json_decode($data, true);
     return $locations['results'];
   }
