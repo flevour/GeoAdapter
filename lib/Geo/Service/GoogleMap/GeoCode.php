@@ -9,6 +9,8 @@
 
 namespace Geo\Service\GoogleMap;
 
+use Geo\Exception\NotImplemented;
+
 /**
  * GeoCode service wrap the Google Location Service
  *
