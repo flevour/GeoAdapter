@@ -32,7 +32,8 @@ class GeoCode extends \Geo\Service
   {
     $name = rawurlencode($q);
     $baseUrl = 'http://maps.googleapis.com/maps/api/geocode/json?address=';
-    $data = $this->client->get("{$baseUrl}{$name}&region={$this->region}&sensor=false&language={$this->language}");
+    $request = $this->client->get("{$baseUrl}{$name}&region={$this->region}&sensor=false&language={$this->language}");
+    $data = $request->send()->getBody(true);
     $locations = json_decode($data, true);
     return $locations['results'];
   }

@@ -38,14 +38,16 @@ class Nominatim extends Service
   protected function query($q)
   {
     $baseUrl = $this->baseUrl . '/search?format=json';
-    $data = $this->client->get(sprintf("%s&q=%s&countrycodes=%s&addressdetails=1", $baseUrl, rawurlencode($q), $this->region));
+    $request = $this->client->get(sprintf("%s&q=%s&countrycodes=%s&addressdetails=1", $baseUrl, rawurlencode($q), $this->region));
+    $data = $request->send()->getBody(true);
     return json_decode($data, true);
   }
   
   protected function reverse($lat, $lng)
   {
         $baseUrl = $this->baseUrl . '/reverse?format=json';
-        $data = $this->client->get(sprintf("%s&lat=%s&lon=%s&countrycodes=%s&addressdetails=1", $baseUrl, $lat, $lng, $this->region));
+        $request = $this->client->get(sprintf("%s&lat=%s&lon=%s&countrycodes=%s&addressdetails=1", $baseUrl, $lat, $lng, $this->region));
+        $data = $request->send()->getBody(true);
         return array(json_decode($data, true));
   }
 }

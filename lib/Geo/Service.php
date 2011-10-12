@@ -8,6 +8,7 @@
  */
 
 namespace Geo;
+use Guzzle\Service\Client;
 
 /**
  * Service is the adapter for the external geo searching services
@@ -53,7 +54,7 @@ abstract class Service
     $this->results->append($location);
   }
 
-  public function __construct(HttpClient $client, $baseUrl = null)
+  public function __construct(Client $client, $baseUrl = null)
   {
     $this->results = new \ArrayObject();
     $this->client = $client;
@@ -91,7 +92,7 @@ abstract class Service
     
     if (empty($results) || count($results) == 0)
     {
-      throw new Exception\NoResults(sprintf('No results "%s" found', print_r($args, true)));
+      throw new Exception\NoResults(sprintf('No results "%s" found in %s::%s', print_r($args, true), get_class($this), $method));
     }
 
     $this->hydrate($results);
