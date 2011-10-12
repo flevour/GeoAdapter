@@ -91,7 +91,7 @@ class Search
               call_user_func_array(array($service, 'search'), $args);
               $this->results = $service->getResults();
               $resultsFound = true;
-              
+              $e = null;
           } catch (\Exception $_e) {
               $e = $_e;
           }
