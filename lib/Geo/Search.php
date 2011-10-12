@@ -92,6 +92,7 @@ class Search
               $this->results = $service->getResults();
               $resultsFound = true;
               $e = null;
+              break; // fermati al primo risultato valido
           } catch (\Exception $_e) {
               $e = $_e;
           }
